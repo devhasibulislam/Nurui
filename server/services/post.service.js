@@ -1,11 +1,23 @@
 const Post = require("../models/Post");
 const Tag = require("../models/Tag");
+const User = require("../models/User");
 const imageRemover = require("../utils/imageRemover.util");
 
 const selectors = "_id name email avatar role status";
 
 exports.postNewPost = async (data) => {
   const result = await Post.create(data);
+  await User.findByIdAndUpdate(
+    result.creator,
+    {
+      $push: {
+        posts: result._id,
+      },
+    },
+    {
+      runValidators: false,
+    }
+  );
   result.tags.forEach(async (res) => {
     await Tag.findByIdAndUpdate(res, {
       $push: {
