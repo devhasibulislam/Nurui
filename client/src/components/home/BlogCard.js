@@ -4,8 +4,6 @@ import { BiUserPin } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
 
 const BlogCard = ({ post }) => {
-  console.log(post);
-
   return (
     <section
       className="lg:p-12 md:p-8 p-4 rounded-xl bg-no-repeat bg-center relative z-0 hover:-translate-y-1 hover:-translate-x-1 transition-all duration-200"
