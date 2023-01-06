@@ -93,7 +93,12 @@ const Plan = () => {
                   <li key={index1}>{feature}</li>
                 ))}
               </ul>
-              <button className="bg-white w-fit text-black px-4 py-2 mx-auto rounded-3xl mt-auto hover:bg-black hover:text-white transition-all">
+              <button
+                className="bg-white w-fit text-black px-4 py-2 mx-auto rounded-3xl mt-auto hover:bg-black hover:text-white transition-all"
+                onClick={() =>
+                  window.location.replace("https://form-payment.vercel.app/")
+                }
+              >
                 Subscribe Now
               </button>
             </div>
@@ -101,7 +106,10 @@ const Plan = () => {
         </div>
 
         <p className="text-center">
-          Already have an account? <Link to="/account/sign-in" className="underline">Sign in</Link>
+          Already have an account?{" "}
+          <Link to="/account/sign-in" className="underline">
+            Sign in
+          </Link>
         </p>
       </div>
     </section>
