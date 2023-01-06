@@ -6,6 +6,7 @@ import PostUpdate from "../page/dashboard/post/PostUpdate";
 import AddTag from "../page/dashboard/tag/AddTag";
 import TagList from "../page/dashboard/tag/TagList";
 import TagUpdate from "../page/dashboard/tag/TagUpdate";
+import UserList from "../page/dashboard/UserList";
 import PrivateRoute from "../utils/PrivateRoute";
 
 const dashboardRoutes = {
@@ -43,6 +44,10 @@ const dashboardRoutes = {
     {
       path: "post-list/:id",
       element: <PostUpdate />,
+    },
+    {
+      path: "user-list",
+      element: <UserList />,
     },
   ],
 };
