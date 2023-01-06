@@ -27,6 +27,7 @@ const authApi = apiSlice.injectEndpoints({
           const user = await queryFulfilled;
           const email = data.email;
           const token = user.data.accessToken;
+          localStorage.setItem("accessToken", token);
           dispatch(loginUser({ email, token }));
         } catch (error) {
           console.log(error);
