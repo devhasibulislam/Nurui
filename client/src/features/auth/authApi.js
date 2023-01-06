@@ -12,6 +12,7 @@ const authApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["User"],
     }),
 
     // signin an user
@@ -40,6 +41,7 @@ const authApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: ["User"],
     }),
 
     // find myself
@@ -51,6 +53,19 @@ const authApi = apiSlice.injectEndpoints({
           authorization: `Bear ${token}`,
         },
       }),
+      providesTags: ["User"],
+    }),
+
+    // find all users
+    getAllUsers: builder.query({
+      query: () => ({
+        url: "user/all-users",
+        method: "GET",
+        headers: {
+          authorization: `Bear ${token}`,
+        },
+      }),
+      providesTags: ["User"],
     }),
 
     // find by email
@@ -59,6 +74,7 @@ const authApi = apiSlice.injectEndpoints({
         url: `user/${email}`,
         method: "GET",
       }),
+      invalidatesTags: ["User"],
     }),
 
     // update user info
@@ -68,6 +84,7 @@ const authApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: ["User"],
     }),
 
     // delete user info
@@ -76,6 +93,7 @@ const authApi = apiSlice.injectEndpoints({
         url: `user/remove-user?id=${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
@@ -88,4 +106,5 @@ export const {
   useFindByEmailQuery,
   useUpdateUserInfoMutation,
   useRemoveUserInfoMutation,
+  useGetAllUsersQuery,
 } = authApi;
