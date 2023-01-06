@@ -68,9 +68,11 @@ export default function Navbar() {
             }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-gray-600 hover:text-blue-600">
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
+              {role && (
+                <li className="text-gray-600 hover:text-blue-600">
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+              )}
               <li className="text-gray-600 hover:text-blue-600">
                 <Link to="/membership">Membership</Link>
               </li>
