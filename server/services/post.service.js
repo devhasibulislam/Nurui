@@ -95,7 +95,7 @@ exports.updatePost = async (id, data) => {
   const post = await Post.findById(id);
 
   if (data?.likes || data?.watches) {
-    if (data.watches) {
+    if (data.watches && data.watches[0] !== null) {
       if (!post.watches.includes(data.watches[0]))
         result = await Post.findByIdAndUpdate(
           id,
@@ -108,7 +108,7 @@ exports.updatePost = async (id, data) => {
             runValidators: false,
           }
         );
-    } else if (data.likes) {
+    } else if (data.likes && data.likes[0] !== null) {
       if (!post.likes.includes(data.likes[0]))
         result = await Post.findByIdAndUpdate(
           id,
