@@ -8,6 +8,8 @@ import {
   useUpdateTagMutation,
 } from "../../../features/tag/tagApi";
 
+const token = localStorage.getItem("accessToken");
+
 const TagUpdate = () => {
   const { id } = useParams();
   const { data, isLoading: fetchingTag } = useGetTagQuery(id);
@@ -55,6 +57,9 @@ const TagUpdate = () => {
         `${process.env.REACT_APP_BASE_URL}tags/thumbnail?public_id=${data?.data?.thumbnail?.public_id}`,
         {
           method: "PATCH",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
           body: formData,
         }
       );

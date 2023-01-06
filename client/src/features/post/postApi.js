@@ -1,6 +1,8 @@
 import apiSlice from "../api/apiSlice";
 
-const authApi = apiSlice.injectEndpoints({
+const token = localStorage.getItem("accessToken");
+
+const postApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // get all post
     getAllPosts: builder.query({
@@ -17,6 +19,9 @@ const authApi = apiSlice.injectEndpoints({
         url: "post/new",
         method: "POST",
         body: data,
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["Post"],
     }),
@@ -36,6 +41,9 @@ const authApi = apiSlice.injectEndpoints({
         url: `post/update/${data._id}`,
         method: "PATCH",
         body: data,
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["Post"],
     }),
@@ -45,6 +53,9 @@ const authApi = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `post/delete/${id}`,
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["Post"],
     }),
@@ -57,4 +68,4 @@ export const {
   useGetPostQuery,
   useUpdatePostMutation,
   useDeletePostMutation,
-} = authApi;
+} = postApi;

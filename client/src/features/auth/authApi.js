@@ -50,7 +50,7 @@ const authApi = apiSlice.injectEndpoints({
         url: "user/myself",
         method: "GET",
         headers: {
-          authorization: `Bear ${token}`,
+          authorization: `Bearer ${token}`,
         },
       }),
       providesTags: ["User"],
@@ -62,7 +62,7 @@ const authApi = apiSlice.injectEndpoints({
         url: "user/all-users",
         method: "GET",
         headers: {
-          authorization: `Bear ${token}`,
+          authorization: `Bearer ${token}`,
         },
       }),
       providesTags: ["User"],
@@ -83,6 +83,9 @@ const authApi = apiSlice.injectEndpoints({
         url: `user/update-user?email=${data.email}`,
         method: "PATCH",
         body: data,
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["User"],
     }),
@@ -92,6 +95,9 @@ const authApi = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `user/remove-user?id=${id}`,
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["User"],
     }),

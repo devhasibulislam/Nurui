@@ -1,6 +1,8 @@
 import apiSlice from "../api/apiSlice";
 
-const authApi = apiSlice.injectEndpoints({
+const token = localStorage.getItem("accessToken");
+
+const tagApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // get all tags
     getAllTags: builder.query({
@@ -17,6 +19,9 @@ const authApi = apiSlice.injectEndpoints({
         url: "tags/new",
         method: "POST",
         body: data,
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["Tag"],
     }),
@@ -36,6 +41,9 @@ const authApi = apiSlice.injectEndpoints({
         url: `tags/update/${data._id}`,
         method: "PATCH",
         body: data,
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["Tag"],
     }),
@@ -45,6 +53,9 @@ const authApi = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `tags/delete/${id}`,
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }),
       invalidatesTags: ["Tag"],
     }),
@@ -57,4 +68,4 @@ export const {
   useGetTagQuery,
   useUpdateTagMutation,
   useDeleteTagMutation,
-} = authApi;
+} = tagApi;

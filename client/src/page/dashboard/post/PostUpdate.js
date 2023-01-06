@@ -8,6 +8,8 @@ import {
   useUpdatePostMutation,
 } from "../../../features/post/postApi";
 
+const token = localStorage.getItem("accessToken");
+
 const PostUpdate = () => {
   const { id } = useParams();
   const { data, isLoading: fetchingPost } = useGetPostQuery(id);
@@ -57,6 +59,9 @@ const PostUpdate = () => {
         `${process.env.REACT_APP_BASE_URL}post/thumbnail?public_id=${data?.data?.thumbnail?.public_id}`,
         {
           method: "PATCH",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
           body: formData,
         }
       );

@@ -6,6 +6,7 @@ const userController = require("../controllers/user.controller");
 const imageController = require("../controllers/image.controller");
 const verify = require("../middlewares/verify.middleware");
 const upload = require("../middlewares/upload.middleware");
+const authorize = require("../middlewares/authorize.middleware");
 
 /* router level connection */
 const router = express.Router();
@@ -15,7 +16,12 @@ const router = express.Router();
 router
   .route("/avatar")
   .post(upload.single("avatar"), imageController.imageUpload)
-  .patch(upload.single("avatar"), imageController.imageUpdate);
+  .patch(
+    upload.single("avatar"),
+    verify,
+    authorize("admin", "user"),
+    imageController.imageUpdate
+  );
 
 // sign up an user with confirmation
 router
@@ -30,7 +36,12 @@ router.post("/sign-in", userController.signInAnUser);
 router.get("/myself", verify, userController.persistMeLogin);
 
 // fetch all user
-router.get("/all-users", userController.displayAllUsers);
+router.get(
+  "/all-users",
+  verify,
+  authorize("admin"),
+  userController.displayAllUsers
+);
 
 // reset password
 router
@@ -39,12 +50,27 @@ router
   .patch(userController.forgotPassword);
 
 // update an user
-router.patch("/update-user", userController.updateUser);
+router.patch(
+  "/update-user",
+  verify,
+  authorize("admin", "user"),
+  userController.updateUser
+);
 
 // remove an user account
-router.delete("/remove-user", userController.removeAnUser);
+router.delete(
+  "/remove-user",
+  verify,
+  authorize("admin", "user"),
+  userController.removeAnUser
+);
 
-router.get("/:email", userController.displayUser);
+router.get(
+  "/:email",
+  verify,
+  authorize("admin", "user"),
+  userController.displayUser
+);
 
 /* export user router */
 module.exports = router;

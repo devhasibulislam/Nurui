@@ -10,6 +10,8 @@ import {
 } from "../../features/auth/authApi";
 import { logout } from "../../features/auth/authSlice";
 
+const token = localStorage.getItem("accessToken");
+
 const MyProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -110,6 +112,9 @@ const MyProfile = () => {
         `${process.env.REACT_APP_BASE_URL}user/avatar?public_id=${userAvatar?.public_id}`,
         {
           method: "PATCH",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
           body: formData,
         }
       );
