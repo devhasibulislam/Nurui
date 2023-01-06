@@ -135,8 +135,8 @@ exports.removeAnUser = async (id) => {
     return { invalidRole: true };
   }
 
-  if (user.role !== "admin" && user.avatar.public_id !== "") {
-    const public_id = user.avatar.public_id;
+  if (user.role !== "admin" && user?.avatar?.public_id !== "") {
+    const public_id = user?.avatar?.public_id;
     await imageRemover(public_id);
   }
 
