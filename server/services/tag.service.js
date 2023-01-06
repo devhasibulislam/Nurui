@@ -1,10 +1,22 @@
 const Tag = require("../models/Tag");
+const User = require("../models/User");
 const imageRemover = require("../utils/imageRemover.util");
 
 const selectors = "_id name email avatar role status";
 
 exports.postNewTag = async (data) => {
   const result = await Tag.create(data);
+  await User.findByIdAndUpdate(
+    result.creator,
+    {
+      $push: {
+        tags: result._id,
+      },
+    },
+    {
+      runValidators: false,
+    }
+  );
   return result;
 };
 
