@@ -25,7 +25,7 @@ function BlogCarousel({ posts }) {
       >
         {posts?.map(
           (post) =>
-            post?.globalTag === "featured" && (
+            post?.globalTag !== "none" && (
               <SwiperSlide key={post?._id}>
                 <div className="grid lg:grid-cols-2 lg:gap-x-12 md:grid-cols-2 md:gap-x-10 grid-cols-1 lg:h-[650px] md:h-[500px] h-[450px]">
                   <div
