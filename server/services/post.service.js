@@ -151,6 +151,11 @@ exports.deletePost = async ({ id }) => {
       },
     });
   });
+  await User.findByIdAndUpdate(result.creator, {
+    $pull: {
+      posts: result._id,
+    },
+  });
   await imageRemover(result?.thumbnail?.public_id);
   return result;
 };

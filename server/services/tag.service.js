@@ -89,6 +89,11 @@ exports.updateTag = async (id, data) => {
 
 exports.deleteTag = async ({ id }) => {
   const result = await Tag.findByIdAndDelete(id);
+  await User.findByIdAndUpdate(result.creator, {
+    $pull: {
+      tags: result._id,
+    },
+  });
   await imageRemover(result?.thumbnail?.public_id);
   return result;
 };
