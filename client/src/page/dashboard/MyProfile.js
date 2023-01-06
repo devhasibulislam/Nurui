@@ -53,15 +53,17 @@ const MyProfile = () => {
 
   useEffect(() => {
     if (isLoading || isRemoveLoading) {
-      toast.loading("Posting user", { id: "updateOrDeleteUserInformation" });
+      toast.loading("Loading...", { id: "updateOrDeleteUserInformation" });
     }
     if (isSuccess || isRemoveSuccess) {
-      toast.success("Successfully post user", {
+      toast.success("Successfully!!!", {
         id: "updateOrDeleteUserInformation",
       });
     }
     if (isError || isRemoveError) {
-      toast.error("An error occurred", { id: "updateOrDeleteUserInformation" });
+      toast.error("An error occurred :(", {
+        id: "updateOrDeleteUserInformation",
+      });
     }
   }, [
     isError,
