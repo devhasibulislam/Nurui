@@ -45,7 +45,7 @@ const ViewPost = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <section className="max-w-7xl mx-auto">
+    <section className="max-w-7xl mx-auto lg:px-0 px-4">
       <div className="grid lg:grid-cols-2 lg:gap-x-12 md:grid-cols-2 md:gap-x-10 grid-cols-1 lg:h-[650px] md:h-[500px] h-[450px]">
         <div
           className="bg-no-repeat bg-center bg-cover lg:rounded-xl md:rounded-xl lg:h-auto md:h-auto h-[300px]"
