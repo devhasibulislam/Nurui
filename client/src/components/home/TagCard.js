@@ -9,8 +9,10 @@ const TagCard = ({ tag }) => {
       className="p-8 rounded-xl bg-no-repeat bg-center relative z-0 hover:-translate-y-1 hover:-translate-x-1 transition-all duration-200"
       style={{ backgroundImage: `url(${tag?.thumbnail?.url})` }}
     >
+      {/* overlay */}
       <div className="absolute w-full h-full top-0 left-0 bg-black rounded-xl opacity-50 -z-10" />
-      <div className="absolute top-4 right-4 flex flex-row gap-x-3">
+      {/* post & author */}
+      <div className="flex flex-row flex-wrap justify-end gap-3">
         <div className="flex flex-wrap gap-x-2">
           <div
             style={{ paddingTop: "0.1em", paddingBottom: "0.1rem" }}
@@ -28,7 +30,8 @@ const TagCard = ({ tag }) => {
           </div>
         </div>
       </div>
-      <article className="z-10 text-white flex flex-col gap-y-4">
+      {/* credentials */}
+      <article className="z-10 text-white flex flex-col gap-y-2">
         <h2 className="text-2xl font-medium text-ellipsis overflow-hidden whitespace-nowrap">
           <Link to={`/tag/${tag?._id}`}>{tag?.title}</Link>
         </h2>
