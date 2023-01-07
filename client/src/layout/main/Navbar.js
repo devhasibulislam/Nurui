@@ -17,10 +17,10 @@ export default function Navbar() {
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link to="/">
               <img
-                src="/nurui.svg"
-                alt="nurui logo"
+                src="/logo.png"
+                alt="canim logo"
                 loading="lazy"
-                className="w-24 object-cover object-center"
+                className="w-28 object-cover object-center"
               />
             </Link>
             <div className="md:hidden">

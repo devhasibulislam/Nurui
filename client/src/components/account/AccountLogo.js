@@ -5,10 +5,10 @@ const AccountLogo = () => {
   return (
     <Link to="/">
       <img
-        src="/nurui.svg"
-        alt="nurui logo"
+        src="/logo.png"
+        alt="canim logo"
         loading="lazy"
-        className="w-24 object-cover object-center"
+        className="w-28 object-cover object-center"
       />
     </Link>
   );
