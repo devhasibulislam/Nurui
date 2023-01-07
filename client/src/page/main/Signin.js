@@ -21,6 +21,7 @@ const Signin = () => {
     isError: isAuthError,
     isLoading: isAuthLoading,
     user: { email },
+    error,
   } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -45,11 +46,11 @@ const Signin = () => {
       });
     }
     if (isError) {
-      toast.error("Check email and confirm validation", {
+      toast.error(error, {
         id: "postToCheckUserCredentials",
       });
     }
-  }, [isError, isLoading, isSuccess]);
+  }, [isError, isLoading, isSuccess, error]);
 
   useEffect(() => {
     if (password !== undefined && password !== "") {
