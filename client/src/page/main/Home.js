@@ -23,7 +23,7 @@ const Home = () => {
             <BlogCarousel posts={posts} />
           </div>
           <div className="flex flex-col gap-y-8">
-            <div className="max-w-7xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 lg:px-0 px-8 relative lg:-mt-20 md:-mt-20 -mt-8 z-10 mb-20">
+            <div className="max-w-7xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 lg:px-0 px-8 relative lg:-mt-20 md:-mt-20 -mt-4 z-10 mb-20">
               {posts?.map((post) => (
                 <BlogCard key={post?._id} post={post} />
               ))}

@@ -32,14 +32,14 @@ function BlogCarousel({ posts }) {
                     className="bg-no-repeat bg-center bg-cover lg:rounded-xl md:rounded-xl lg:h-auto md:h-auto h-[300px]"
                     style={{ backgroundImage: `url(${post?.thumbnail?.url})` }}
                   />
-                  <article className="flex flex-col lg:gap-y-4 md:gap-y-4 gap-y-3 lg:h-auto md:h-auto h-full my-auto">
+                  <article className="flex flex-col lg:gap-y-4 md:gap-y-4 gap-y-3 lg:h-auto md:h-auto h-full my-auto lg:px-0 px-4">
                     <div
                       style={{ paddingTop: "0.1em", paddingBottom: "0.1rem" }}
                       className="text-xs px-3 rounded-full bg-purple-200 text-purple-800 w-fit"
                     >
                       {post?.globalTag}
                     </div>
-                    <h1 className="lg:text-6xl md:text-3xl font-bold text-black lg:leading-[4rem] md:leading-[4rem]">
+                    <h1 className="lg:text-6xl md:text-3xl font-bold text-black lg:leading-[4rem] md:leading-[4rem] text-ellipsis overflow-hidden whitespace-nowrap">
                       {post?.title}
                     </h1>
                     <p className="text-slate-600">

@@ -9,7 +9,7 @@ const AllTags = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+    <section className="grid lg:grid-cols-3 grid-cols-1 gap-4">
       {data?.data?.map((tag) => (
         <TagCard key={tag._id} tag={tag} />
       ))}

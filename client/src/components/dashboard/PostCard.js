@@ -73,7 +73,7 @@ const PostCard = ({ post }) => {
         ))}
       </div>
       {/* read time */}
-      <div className="bottom-4 right-4 flex flex-row justify-end gap-x-3">
+      <div className="bottom-4 right-4 flex flex-row flex-wrap justify-end gap-3">
         <div
           style={{ paddingTop: "0.1em", paddingBottom: "0.1rem" }}
           className="text-xs px-3 rounded-full bg-cyan-200 text-cyan-800 w-fit flex items-center gap-1"

@@ -9,7 +9,7 @@ const AllPosts = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+    <section className="grid lg:grid-cols-3 grid-cols-1 gap-4">
       {data?.data?.map((post) => (
         <PostCard key={post._id} post={post} />
       ))}
