@@ -1,16 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import TagCard from "../../../components/dashboard/TagCard";
 import Loading from "../../../components/shared/Loading";
-import { useGetAllTagsQuery } from "../../../features/tag/tagApi";
 
 const TagList = () => {
-  const { data, isLoading } = useGetAllTagsQuery();
+  const { userCredentials, isLoading } = useSelector((state) => state.auth);
 
   return isLoading ? (
     <Loading />
   ) : (
     <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-      {data?.data?.map((tag) => (
+      {userCredentials?.tags?.map((tag) => (
         <TagCard key={tag._id} tag={tag} />
       ))}
     </section>
