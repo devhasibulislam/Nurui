@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import Title from "../../../components/shared/Title";
 import { useInsertNewTagMutation } from "../../../features/tag/tagApi";
 
+const token = localStorage.getItem("accessToken");
+
 const AddTag = () => {
   const { handleSubmit, register, reset, control } = useForm();
   const description = useWatch({ control, name: "description" });
@@ -43,6 +45,9 @@ const AddTag = () => {
         `${process.env.REACT_APP_BASE_URL}tags/thumbnail`,
         {
           method: "POST",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
           body: formData,
         }
       );

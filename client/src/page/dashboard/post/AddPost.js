@@ -7,6 +7,8 @@ import { useInsertNewPostMutation } from "../../../features/post/postApi";
 import { FiTrash } from "react-icons/fi";
 import { useGetAllTagsQuery } from "../../../features/tag/tagApi";
 
+const token = localStorage.getItem("accessToken");
+
 const AddPost = () => {
   const { handleSubmit, register, reset, control } = useForm();
   const description = useWatch({ control, name: "description" });
@@ -65,6 +67,9 @@ const AddPost = () => {
         `${process.env.REACT_APP_BASE_URL}post/thumbnail`,
         {
           method: "POST",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
           body: formData,
         }
       );
