@@ -71,7 +71,38 @@ exports.signInAnUser = async ({ email, password }) => {
 
 /* retain a user after, login based token expiry */
 exports.persistMeLogin = async (id) => {
-  const user = await User.findById(id).select("-password");
+  const user = await User.findById(id)
+    .select("-password")
+    .populate([
+      {
+        path: "posts",
+        select: "-__v",
+        populate: [
+          {
+            path: "creator",
+            select: "-__v",
+          },
+          {
+            path: "tags",
+            select: "-__v",
+          },
+        ],
+      },
+      {
+        path: "tags",
+        select: "-__v",
+        populate: [
+          {
+            path: "creator",
+            select: "-__v",
+          },
+          {
+            path: "posts",
+            select: "-__v",
+          },
+        ],
+      },
+    ]);
   return user;
 };
 
@@ -152,6 +183,17 @@ exports.updateUser = async (email, data) => {
 };
 
 exports.displayUser = async (email) => {
-  const result = await User.findOne({ email }).select("-password");
+  const result = await User.findOne({ email })
+    .select("-password")
+    .populate([
+      {
+        path: "posts",
+        select: "-__v",
+      },
+      {
+        path: "tags",
+        select: "-__v",
+      },
+    ]);
   return result;
 };
