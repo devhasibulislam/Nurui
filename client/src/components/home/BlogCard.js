@@ -13,7 +13,7 @@ const BlogCard = ({ post }) => {
       <div className="absolute top-4 left-4 flex flex-row gap-x-3">
         <div
           style={{ paddingTop: "0.1em", paddingBottom: "0.1rem" }}
-          className="text-xs px-3 rounded-full bg-purple-200 text-purple-800 flex items-center gap-x-1"
+          className="text-xs px-3 rounded-full bg-purple-200 text-purple-800 md:flex md:items-center gap-x-1 hidden"
         >
           <BiUserPin />
           {post?.creator?.name}
