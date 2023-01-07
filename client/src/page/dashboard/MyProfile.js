@@ -91,7 +91,7 @@ const MyProfile = () => {
     } = data;
     const userInfo = {
       email,
-      usrAvatar,
+      avatar: usrAvatar,
       membership,
       name,
       role,
