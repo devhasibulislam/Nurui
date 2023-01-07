@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loading from "../../../components/shared/Loading";
 import Title from "../../../components/shared/Title";
@@ -18,6 +19,9 @@ const PostUpdate = () => {
     useUpdatePostMutation();
   const [thumbnail, setThumbnail] = useState({});
   const [thumbnailLoading, setThumbnailLoading] = useState(false);
+  const {
+    user: { role },
+  } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setPost({
@@ -144,37 +148,39 @@ const PostUpdate = () => {
             />
           </div>
 
-          <div className="w-full">
-            <select
-              id="globalTag"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              onChange={(event) =>
-                setPost({ ...post, globalTag: event.target.value })
-              }
-            >
-              <option
-                value="featured"
-                selected={post?.globalTag === "featured"}
+          {role === "admin" && (
+            <div className="w-full">
+              <select
+                id="globalTag"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                onChange={(event) =>
+                  setPost({ ...post, globalTag: event.target.value })
+                }
               >
-                Featured
-              </option>
-              <option
-                value="preemptive"
-                selected={post?.globalTag === "preemptive"}
-              >
-                Preemptive
-              </option>
-              <option value="none" selected={post?.globalTag === "none"}>
-                None
-              </option>
-              <option
-                value="weekly-best"
-                selected={post?.globalTag === "weekly-best"}
-              >
-                Weekly Best
-              </option>
-            </select>
-          </div>
+                <option
+                  value="featured"
+                  selected={post?.globalTag === "featured"}
+                >
+                  Featured
+                </option>
+                <option
+                  value="preemptive"
+                  selected={post?.globalTag === "preemptive"}
+                >
+                  Preemptive
+                </option>
+                <option value="none" selected={post?.globalTag === "none"}>
+                  None
+                </option>
+                <option
+                  value="weekly-best"
+                  selected={post?.globalTag === "weekly-best"}
+                >
+                  Weekly Best
+                </option>
+              </select>
+            </div>
+          )}
 
           {/* submit button */}
           <button
