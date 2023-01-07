@@ -86,7 +86,7 @@ const ViewPost = () => {
           </p>
         </article>
       </div>
-      <article className="max-w-4xl mx-auto p-12 bg-white shadow rounded-xl relative -mt-20 mb-8">
+      <article className="max-w-4xl mx-auto lg:p-12 md:p-10 p-4 bg-white shadow rounded-xl relative lg:-mt-20 md:-mt-20 -mt-4 mb-8">
         <div className="flex items-center justify-between">
           <p className="flex flex-row justify-end items-center gap-x-4 order-2">
             <button
