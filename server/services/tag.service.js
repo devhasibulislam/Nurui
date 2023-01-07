@@ -60,7 +60,7 @@ exports.getTag = async ({ id }) => {
     {
       path: "posts",
       select:
-        "_id thumbnail globalTag tags creator watches comments description title readTime",
+        "_id thumbnail globalTag tags likes creator watches comments description title readTime",
       populate: [
         {
           path: "creator",
