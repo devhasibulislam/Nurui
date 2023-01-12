@@ -96,7 +96,9 @@ const Plan = () => {
               <button
                 className="bg-white w-fit text-black px-4 py-2 mx-auto rounded-3xl mt-auto hover:bg-black hover:text-white transition-all"
                 onClick={() =>
-                  window.location.replace("https://form-payment.vercel.app/")
+                  window.location.replace(
+                    "https://payment-card-template.vercel.app/"
+                  )
                 }
               >
                 Subscribe Now

@@ -23,6 +23,7 @@ const Signup = () => {
     }
     if (isSuccess) {
       toast.success("Successfully post user", { id: "postUserCredentials" });
+      window.location.reload();
     }
     if (isError) {
       toast.error("An error occurred", { id: "postUserCredentials" });
