@@ -94,51 +94,30 @@ exports.updatePost = async (id, data) => {
   let result;
   const post = await Post.findById(id);
 
-  if (data?.likes || data?.watches) {
-    if (data.watches && data.watches[0] !== null) {
-      if (!post.watches.includes(data.watches[0]))
-        result = await Post.findByIdAndUpdate(
-          id,
-          {
-            $push: {
-              watches: data.watches[0],
-            },
-          },
-          {
-            runValidators: false,
-          }
-        );
-    } else if (data.likes && data.likes[0] !== null) {
-      if (!post.likes.includes(data.likes[0]))
-        result = await Post.findByIdAndUpdate(
-          id,
-          {
-            $push: {
-              likes: data.likes[0],
-            },
-          },
-          {
-            runValidators: false,
-          }
-        );
-    }
-  } else if (data?.comments) {
-    result = await Post.findByIdAndUpdate(
-      id,
-      {
+  if ("likes" in data) {
+    const { _id, likes } = data;
+    if (!post.likes.includes(likes)) {
+      result = await Post.findByIdAndUpdate(_id, {
         $push: {
-          comments: data?.comments[0],
+          likes,
         },
-      },
-      {
-        runValidators: false,
-      }
-    );
+      });
+    }
+  } else if ("watches" in data) {
+    const { _id, watches } = data;
+    if (!post.watches.includes(watches)) {
+      result = await Post.findByIdAndUpdate(_id, {
+        $push: {
+          watches,
+        },
+      });
+    }
   } else {
     result = await Post.findByIdAndUpdate(id, data, {
       runValidators: false,
     });
   }
+
   return result;
 };
 

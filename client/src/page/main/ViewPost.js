@@ -31,7 +31,7 @@ const ViewPost = () => {
 
   useEffect(() => {
     if (!isFetching)
-      updatePostCredentials({ _id: id, watches: [userCredentials?._id] });
+      updatePostCredentials({ _id: id, watches: userCredentials?._id });
   }, [id, isFetching, updatePostCredentials, userCredentials]);
 
   function onSubmit(data) {
@@ -94,7 +94,7 @@ const ViewPost = () => {
               onClick={() =>
                 updatePostCredentials({
                   _id: post?._id,
-                  likes: [userCredentials?._id],
+                  likes: userCredentials?._id,
                 })
               }
             >
