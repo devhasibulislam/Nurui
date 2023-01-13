@@ -153,6 +153,7 @@ const Signup = () => {
                         id="file_input"
                         name="avatar"
                         type="file"
+                        required
                         onChange={handleUserAvatar}
                       />
                     </div>

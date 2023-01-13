@@ -123,6 +123,7 @@ const AddPost = () => {
               id="file_input"
               name="thumbnail"
               type="file"
+              required
               onChange={handlePostThumbnail}
             />
           </div>

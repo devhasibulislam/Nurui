@@ -96,6 +96,7 @@ const AddTag = () => {
               id="file_input"
               name="thumbnail"
               type="file"
+              required
               onChange={handleTagThumbnail}
             />
           </div>
