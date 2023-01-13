@@ -67,8 +67,6 @@ router.delete(
 
 router.get(
   "/:email",
-  verify,
-  authorize("admin", "user"),
   userController.displayUser
 );
 
