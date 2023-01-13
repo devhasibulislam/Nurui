@@ -199,7 +199,7 @@ const AddPost = () => {
                 onClick={() => tagAppend("")}
                 className="btn"
               >
-                Add Skill
+                Add Tag
               </button>
             </div>
           </div>
