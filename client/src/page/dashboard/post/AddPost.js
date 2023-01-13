@@ -210,7 +210,7 @@ const AddPost = () => {
           type="submit"
           className="font-bold text-white py-3 rounded-lg bg-primary w-full disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
-          Add new tag
+          Add new post
         </button>
       </form>
     </section>
