@@ -39,7 +39,7 @@ const Signin = () => {
   useEffect(() => {
     if (isLoading) {
       toast.loading("Posting user", { id: "postToCheckUserCredentials" });
-      window.location.reload();
+      // window.location.reload();
     }
     if (isSuccess) {
       toast.success("Successfully post user", {

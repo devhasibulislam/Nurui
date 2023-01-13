@@ -96,8 +96,6 @@ const authSlice = createSlice({
         state.isError = false;
         state.error = "";
 
-        console.log(payload, "addCase block");
-
         if (payload.acknowledgement) {
           state.user.email = payload.data.email;
           state.user.role = payload.data.role;
