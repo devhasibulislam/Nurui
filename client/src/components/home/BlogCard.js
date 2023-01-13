@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiUserPin } from "react-icons/bi";
-import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineComment } from "react-icons/ai";
 import { SlLike } from "react-icons/sl";
 
 const BlogCard = ({ post }) => {
@@ -52,7 +52,14 @@ const BlogCard = ({ post }) => {
       <div className="bottom-4 right-4 flex flex-row justify-end gap-x-3 mt-4">
         <div
           style={{ paddingTop: "0.1em", paddingBottom: "0.1rem" }}
-          className="text-xs px-3 rounded-full bg-indigo-200 text-indigo-800 w-fit flex items-center gap-1"
+          className="text-xs px-3 rounded-full bg-orange-200 text-orange-800 w-fit flex items-center gap-1"
+        >
+          <AiOutlineComment />
+          {post?.comments?.length}
+        </div>
+        <div
+          style={{ paddingTop: "0.1em", paddingBottom: "0.1rem" }}
+          className="text-xs px-3 rounded-full bg-teal-200 text-teal-800 w-fit flex items-center gap-1"
         >
           <AiOutlineEye />
           {post?.watches?.length}
